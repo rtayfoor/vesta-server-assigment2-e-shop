@@ -2201,8 +2201,7 @@ body {
 .welcome-message {
     text-align: center;
     padding: 25px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    color: black;
     border-radius: 10px;
     margin: 20px auto;
     max-width: 600px;
