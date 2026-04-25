@@ -76,9 +76,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     if (empty($errors)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
-        $sql = "INSERT INTO tbl_users (user_name, user_email, user_pass, user_address) VALUES (?, ?, ?, ?)";
+        $get_max_id = "SELECT MAX(user_id) as max_id FROM tbl_users";
+        $max_result = $conn->query($get_max_id);
+        $max_row = $max_result->fetch_assoc();
+        $next_id = ($max_row['max_id'] ?? 0) + 1;
+        
+        $sql = "INSERT INTO tbl_users (user_id, user_name, user_email, user_pass, user_address) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssss", $form_data['user_name'], $form_data['user_email'], $hashed_password, $form_data['user_address']);
+        $stmt->bind_param("issss", $next_id, $form_data['user_name'], $form_data['user_email'], $hashed_password, $form_data['user_address']);
         
         if ($stmt->execute()) {
             $success = "Registration successful! You can now login.";
