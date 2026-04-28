@@ -89,11 +89,7 @@ if ($result) {
                     <button type="submit" name="login">Login</button>
                 </form>
                 
-                <div class="demo-credentials">
-                 
-                    <p> Email: mbates5@lancashire.ac.uk</p>
-                    <p> Password: password123</p>
-                </div>
+             
             </div>
         <?php endif; ?>
         
