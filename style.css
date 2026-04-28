@@ -636,10 +636,14 @@ th {
     align-items: center;
     gap: 20px;
 }
+/* ===== LOGO SIZE INCREASED SIGNIFICANTLY ===== */
 .uclanlogo {
-    width: 80px;
+    width: 220px;      /* was 80px/150px — now much larger */
     height: auto;
+    max-width: 100%;
+    display: block;
 }
+/* ============================================ */
 .shop-title {
     font-size: 32px;
     font-weight: bold;
@@ -725,11 +729,15 @@ th {
     .header .navigation {
         display: none;
     }
+    /* Logo size on mobile - keep large but slightly smaller for small screens */
     .uclanlogo {
-        width: 60px;
+        width: 160px;
     }
     .shop-title {
         font-size: 22px;
+    }
+    .header-left {
+        gap: 12px;
     }
 }
 @media (min-width: 769px) {
@@ -822,86 +830,69 @@ th {
     color: #333;
     line-height: 1.5;
 }
-    .password-requirements {
-        background: #f8f9fa;
-        border-left: 4px solid #8E1622;
-        padding: 12px;
-        margin-top: 8px;
-        font-size: 12px;
-        color: #666;
-    }
-    .password-requirements ul {
-        margin: 5px 0 0 20px;
-        padding: 0;
-    }
-    .password-requirements li {
-        margin: 3px 0;
-    }
-    .password-requirements .valid {
-        color: #28a745;
-    }
-    .password-requirements .invalid {
-        color: #dc3545;
-    }
-    .error-message {
-        background-color: #f8d7da;
-        color: #721c24;
-        padding: 12px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        border-left: 4px solid #dc3545;
-    }
-    .success-message {
-        background-color: #d4edda;
-        color: #155724;
-        padding: 12px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        border-left: 4px solid #28a745;
-    }
-    .form-group input.error {
-        border-color: #dc3545;
-        background-color: #fff8f8;
-    }
-    .field-error {
-        color: #dc3545;
-        font-size: 12px;
-        margin-top: 5px;
-    }
-       .password-hint {
-           font-size: 12px;
-           color: #666;
-           margin-top: 5px;
-           padding: 8px;
-           background: #f8f9fa;
-           border-radius: 5px;
-       }
-       .password-hint ul {
-           margin: 5px 0 0 20px;
-           padding: 0;
-       }
-       .error-message {
-           background: #f8d7da;
-           color: #721c24;
-           padding: 10px;
-           border-radius: 5px;
-           margin-bottom: 20px;
-           border-left: 4px solid #dc3545;
-       }
-       .success-message {
-           background: #d4edda;
-           color: #155724;
-           padding: 10px;
-           border-radius: 5px;
-           margin-bottom: 20px;
-           border-left: 4px solid #28a745;
-       }
+.password-requirements {
+    background: #f8f9fa;
+    border-left: 4px solid #8E1622;
+    padding: 12px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #666;
+}
+.password-requirements ul {
+    margin: 5px 0 0 20px;
+    padding: 0;
+}
+.password-requirements li {
+    margin: 3px 0;
+}
+.password-requirements .valid {
+    color: #28a745;
+}
+.password-requirements .invalid {
+    color: #dc3545;
+}
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #dc3545;
+}
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #28a745;
+}
+.form-group input.error {
+    border-color: #dc3545;
+    background-color: #fff8f8;
+}
+.field-error {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.password-hint {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+.password-hint ul {
+    margin: 5px 0 0 20px;
+    padding: 0;
+}
 .item-container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
 }
-
 .product-details {
     display: flex;
     gap: 40px;
@@ -911,7 +902,6 @@ th {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     margin-bottom: 40px;
 }
-
 .product-image {
     width: 400px;
     height: 400px;
@@ -919,30 +909,25 @@ th {
     background: #f8f9fa;
     border-radius: 12px;
 }
-
 .product-info {
     flex: 1;
 }
-
 .product-info h1 {
     font-size: 28px;
     margin: 0 0 10px 0;
     text-align: left;
     color: #333;
 }
-
 .product-price {
     font-size: 32px;
     font-weight: bold;
     color: #8E1622;
     margin-bottom: 15px;
 }
-
 .rating {
     margin-bottom: 15px;
     color: #ffc107;
 }
-
 .stock-good {
     background: #d4edda;
     color: #155724;
@@ -952,7 +937,6 @@ th {
     font-size: 14px;
     margin-bottom: 20px;
 }
-
 .stock-low {
     background: #fff3cd;
     color: #856404;
@@ -962,7 +946,6 @@ th {
     font-size: 14px;
     margin-bottom: 20px;
 }
-
 .stock-out {
     background: #f8d7da;
     color: #721c24;
@@ -972,27 +955,22 @@ th {
     font-size: 14px;
     margin-bottom: 20px;
 }
-
 .description {
     margin: 20px 0;
 }
-
 .description h3 {
     margin-bottom: 10px;
     color: #333;
 }
-
 .description p {
     line-height: 1.6;
     text-align: left;
 }
-
 .actions {
     display: flex;
     gap: 15px;
     margin-top: 20px;
 }
-
 .back-btn {
     background: #6c757d;
     color: white;
@@ -1001,11 +979,9 @@ th {
     border-radius: 25px;
     display: inline-block;
 }
-
 .back-btn:hover {
     background: #5a6268;
 }
-
 .add-btn {
     background: #8E1622;
     color: white;
@@ -1017,34 +993,28 @@ th {
     cursor: pointer;
     font-size: 16px;
 }
-
 .add-btn:hover {
     background: #6e111b;
 }
-
 .reviews-section {
     background: white;
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-
 .reviews-section h3 {
     margin-bottom: 20px;
     color: #333;
 }
-
 .write-review {
     background: #f8f9fa;
     padding: 20px;
     border-radius: 12px;
     margin-bottom: 30px;
 }
-
 .write-review h4 {
     margin-bottom: 15px;
 }
-
 .write-review select, .write-review input, .write-review textarea {
     width: 100%;
     padding: 10px;
@@ -1052,7 +1022,6 @@ th {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-
 .write-review button {
     background: #8E1622;
     color: white;
@@ -1061,40 +1030,32 @@ th {
     border-radius: 5px;
     cursor: pointer;
 }
-
 .review {
     border-bottom: 1px solid #eee;
     padding: 20px 0;
 }
-
 .review:last-child {
     border-bottom: none;
 }
-
 .review-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
 }
-
 .review-header strong {
     font-size: 16px;
 }
-
 .review-header span {
     color: #ffc107;
 }
-
 .review-meta {
     color: #666;
     font-size: 12px;
     margin-bottom: 10px;
 }
-
 .review-text {
     line-height: 1.5;
 }
-
 .success {
     background: #d4edda;
     color: #155724;
@@ -1102,7 +1063,6 @@ th {
     border-radius: 5px;
     margin-bottom: 20px;
 }
-
 .error {
     background: #f8d7da;
     color: #721c24;
@@ -1110,12 +1070,10 @@ th {
     border-radius: 5px;
     margin-bottom: 20px;
 }
-
 @media (max-width: 768px) {
     .product-details {
         flex-direction: column;
     }
-    
     .product-image {
         width: 100%;
         height: auto;
@@ -1125,17 +1083,14 @@ th {
     display: flex;
     gap: 5px;
 }
-
 .review-stars-input label {
     font-size: 30px;
     color: #ddd;
     cursor: pointer;
 }
-
 .review-stars-input input {
     display: none;
 }
-
 .review-stars-input input:checked + label {
     color: #ffc107;
 }
@@ -1143,12 +1098,10 @@ th {
     display: flex;
     gap: 3px;
 }
-
 .star-filled {
     color: #ffc107;
     font-size: 16px;
 }
-
 .star-empty {
     color: #ddd;
     font-size: 16px;
@@ -1159,17 +1112,14 @@ th {
     justify-content: flex-end;
     gap: 5px;
 }
-
 .review-stars-input input {
     display: none;
 }
-
 .review-stars-input label {
     font-size: 30px;
     color: #ddd;
     cursor: pointer;
 }
-
 .review-stars-input label:hover,
 .review-stars-input label:hover ~ label,
 .review-stars-input input:checked ~ label {
@@ -1182,7 +1132,6 @@ th {
     border-bottom: 1px solid rgba(255,255,255,0.2);
     margin-bottom: 10px;
 }
-
 .logout-btn {
     color: #ffc107;
     text-decoration: none;
@@ -1190,25 +1139,36 @@ th {
     display: block;
     padding: 10px 0;
 }
-
 .logout-btn:hover {
     color: #ffeb3b;
     text-decoration: underline;
 }
-
 .mobile-user-info {
     margin-top: 20px;
     padding-top: 10px;
     border-top: 1px solid rgba(255,255,255,0.2);
 }
-
 .login-link, .register-link {
     color: white;
     text-decoration: none;
     display: block;
     padding: 8px 0;
 }
-
 .login-link:hover, .register-link:hover {
     text-decoration: underline;
+}
+/* Additional small-screen refinements for extra-large logo */
+@media (max-width: 480px) {
+    .uclanlogo {
+        width: 130px;
+    }
+    .shop-title {
+        font-size: 18px;
+    }
+    .header-left {
+        gap: 8px;
+    }
+    .header {
+        padding: 15px 20px;
+    }
 }
