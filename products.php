@@ -4,43 +4,9 @@ require_once 'conn.php';
 
 $is_logged_in = isset($_SESSION['user_id']);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_to_cart'])) {
-    if (!$is_logged_in) {
-        header("Location: index.php#login");
-        exit();
-    }
-    
-    $product_id = intval($_POST['product_id']);
-    
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
-    
-    $sql = "SELECT product_id, product_title, product_price FROM products WHERE product_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $product_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($row = $result->fetch_assoc()) {
-        if (isset($_SESSION['cart'][$product_id])) {
-            $_SESSION['cart'][$product_id]['quantity']++;
-        } else {
-            $_SESSION['cart'][$product_id] = [
-                'id' => $row['product_id'],
-                'name' => $row['product_title'],
-                'price' => $row['product_price'],
-                'quantity' => 1
-            ];
-        }
-        $_SESSION['cart_message'] = "Product added to cart!";
-    }
-    $stmt->close();
-}
-
 $products = [];
 $sql = "SELECT product_id, product_title, product_price, product_stock, product_src, product_desc 
-        FROM products 
+        FROM tbl_products 
         ORDER BY product_id";
 $result = $conn->query($sql);
 
@@ -65,9 +31,9 @@ $conn->close();
     <?php include 'header.php'; ?>
     
     <div class="products-container">
-                
+        
         <?php if (isset($_SESSION['cart_message'])): ?>
-            <div class="cart-message"><?php echo $_SESSION['cart_message']; unset($_SESSION['cart_message']); ?></div>
+            <div class="cart-message" id="cartMessage"><?php echo $_SESSION['cart_message']; unset($_SESSION['cart_message']); ?></div>
         <?php endif; ?>
         
         <?php if (empty($products)): ?>
@@ -91,20 +57,23 @@ $conn->close();
                             switch($product['product_stock']) {
                                 case 'good-stock':
                                     $stock_class = 'stock-good';
-                                    $stock_text = ' In Stock';
+                                    $stock_text = 'In Stock';
+                                    $in_stock = true;
                                     break;
                                 case 'low-stock':
                                     $stock_class = 'stock-low';
-                                    $stock_text = ' Low Stock';
+                                    $stock_text = 'Low Stock';
+                                    $in_stock = true;
                                     break;
                                 case 'out-of-stock':
                                     $stock_class = 'stock-out';
-                                    $stock_text = ' Out of Stock';
+                                    $stock_text = 'Out of Stock';
                                     $in_stock = false;
                                     break;
                                 default:
                                     $stock_class = 'stock-good';
-                                    $stock_text = ' In Stock';
+                                    $stock_text = 'In Stock';
+                                    $in_stock = true;
                             }
                             ?>
                             
@@ -126,19 +95,16 @@ $conn->close();
                                 
                                 <?php if ($in_stock): ?>
                                     <?php if ($is_logged_in): ?>
-                                        <form method="POST" action="" style="flex: 1;">
+                                        <form method="POST" action="cart-actions.php?action=add">
                                             <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                                            <button type="submit" name="add_to_cart" class="btn-add-cart">
-                                                Add to Cart
-                                            </button>
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button type="submit" class="btn-add-cart">Add to Cart</button>
                                         </form>
                                     <?php else: ?>
-                                        <a href="index.php#login" class="btn-add-cart" style="text-decoration: none; text-align: center; display: inline-block;">
-                                            Login to Buy
-                                        </a>
+                                        <a href="login.php" class="btn-add-cart" style="text-decoration: none; text-align: center; display: inline-block;">Login to Buy</a>
                                     <?php endif; ?>
                                 <?php else: ?>
-                                    <button class="btn-add-cart" disabled>Out of Stock</button>
+                                    <button class="btn-add-cart" disabled style="background-color: #999; cursor: not-allowed;">Out of Stock</button>
                                 <?php endif; ?>
                             </div>
                         </div>
